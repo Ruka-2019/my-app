@@ -28,6 +28,10 @@ jobs:
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
 
+      # For debug pipeline
+      - name: 'Debug'
+        run: 'echo $PROJECT_ID $SERVICE_NAME $GITHUB_SHA $RUN_REGION''
+
       # Build and push image to Google Container Registry
       - name: Build
         run: |-
