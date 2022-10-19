@@ -9,7 +9,7 @@ COPY . .
 
 ARG GENERATE_SOURCEMAP=false
 
-RUN yarn install && yarn build
+RUN npm install && npm build
 
 FROM nginx:1.13.3-alpine
 

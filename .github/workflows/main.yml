@@ -9,8 +9,8 @@ jobs:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     env:
-      PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-      SERVICE_NAME: 'my_app'
+      PROJECT_ID: 'my-project'
+      SERVICE_NAME: 'my-app'
       RUN_REGION: 'asia-east1'
 
     steps:
@@ -45,7 +45,7 @@ jobs:
         run: |-
           gcloud builds submit \
             --quiet \
-            --tag "gcr.io/plz/$GITHUB_SHA"
+            --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME/$GITHUB_SHA"
 
       # Deploy image to Cloud Run
       - name: Deploy
@@ -53,7 +53,7 @@ jobs:
           gcloud run deploy "$SERVICE_NAME" \
             --quiet \
             --region "$RUN_REGION" \
-            --image "gcr.io/plz/$GITHUB_SHA" \
+            --image "gcr.io/$PROJECT_ID/$SERVICE_NAME/$GITHUB_SHA" \
             --platform "managed" \
             --port 80 \
             --allow-unauthenticated
