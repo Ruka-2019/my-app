@@ -8,6 +8,10 @@ jobs:
   setup-build-deploy:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
+    env:
+      PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      SERVICE_NAME: 'my-app'
+      RUN_REGION: 'asia-east1'
 
     steps:
       - name: Checkout
@@ -29,11 +33,11 @@ jobs:
         run: 'gcloud info'
 
       # For debug pipeline
-      - name: 'ENV settings'
+      - name: 'Debug'
         run: |
-          PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}
-          SERVICE_NAME='my-app'
-          RUN_REGION='asia-east1'
+#          PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}
+#          SERVICE_NAME='my-app'
+#          RUN_REGION='asia-east1'
           echo $PROJECT_ID
           echo $SERVICE_NAME
           echo $GITHUB_SHA
@@ -44,7 +48,7 @@ jobs:
         run: |-
           gcloud builds submit \
             --quiet \
-            --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+            --tag "gcr.io/$$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
 
       # Deploy image to Cloud Run
       - name: Deploy
