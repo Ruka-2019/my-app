@@ -30,7 +30,11 @@ jobs:
 
       # For debug pipeline
       - name: 'Debug'
-        run: 'echo $PROJECT_ID $SERVICE_NAME $GITHUB_SHA $RUN_REGION'
+        run: |
+          echo $PROJECT_ID
+          echo $SERVICE_NAME
+          echo $GITHUB_SHA
+          echo $RUN_REGION
 
       # Build and push image to Google Container Registry
       - name: Build
