@@ -31,9 +31,9 @@ jobs:
       # For debug pipeline
       - name: 'ENV settings'
         run: |
-          PROJECT_ID = ${{ secrets.GCP_PROJECT_ID }}
-          SERVICE_NAME = 'my-app'
-          RUN_REGION = 'asia-east1'
+          PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}
+          SERVICE_NAME='my-app'
+          RUN_REGION='asia-east1'
           echo $PROJECT_ID
           echo $SERVICE_NAME
           echo $GITHUB_SHA
