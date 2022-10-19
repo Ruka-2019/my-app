@@ -9,7 +9,7 @@ jobs:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     env:
-      PROJECT_ID: 'monterrey-366020'
+      PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
       SERVICE_NAME: 'my-app'
       RUN_REGION: 'asia-east1'
 
