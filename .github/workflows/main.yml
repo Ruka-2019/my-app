@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-      SERVICE_NAME: 'my-app'
+      SERVICE_NAME: 'my_app'
       RUN_REGION: 'asia-east1'
 
     steps:
