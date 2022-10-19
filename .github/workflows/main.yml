@@ -9,7 +9,7 @@ jobs:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     env:
-      PROJECT_ID: 'my-project'
+      PROJECT_ID: 'monterrey-366020'
       SERVICE_NAME: 'my-app'
       RUN_REGION: 'asia-east1'
 
